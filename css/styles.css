@@ -99,11 +99,11 @@ h1, h2, h3 { line-height: 1.2; }
 /* ---------- music attribution (Uppbeat) — reveals only when scrolled down ---------- */
 .music-credits { max-width: 46rem; margin: 0 auto; width: 100%; box-sizing: border-box;
   max-height: 0; overflow: hidden; opacity: 0; padding: 0 .9rem;
-  color: var(--muted); font-size: .72rem; line-height: 1.5; border-top: 1px solid transparent;
+  color: var(--muted); font-size: .72rem; line-height: 1.35; border-top: 1px solid transparent;
   transition: max-height .4s ease, opacity .3s ease, padding .4s ease, border-color .4s ease; }
-.music-credits.is-revealed { max-height: 16rem; opacity: 1; padding: .7rem .9rem 1.5rem; border-top-color: var(--border); }
-.music-credits__hd { margin: 0 0 .2rem; }
-.music-credits__item { margin: .45rem 0 0; overflow-wrap: anywhere; }
+.music-credits.is-revealed { max-height: 8rem; opacity: 1; padding: .5rem .9rem 1rem; border-top-color: var(--border); }
+.music-credits__hd { margin: 0 0 .15rem; }
+.music-credits__item { margin: .15rem 0 0; overflow-wrap: anywhere; }
 .music-credits__code { font-family: var(--mono); letter-spacing: .02em; }
 .music-credits a { color: inherit; text-decoration: underline; }
 .music-credits a:hover { color: var(--text); }

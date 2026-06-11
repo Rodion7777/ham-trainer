@@ -266,6 +266,7 @@ window.LabDisplays = (function () {
   function coverMap() { var s = Math.max(window.innerWidth / IMG_W, window.innerHeight / IMG_H); return { s: s, ox: (window.innerWidth - IMG_W * s) / 2, oy: (window.innerHeight - IMG_H * s) / 2 }; }
 
   function placeAll() {
+    if (!window.innerWidth || !window.innerHeight) return; // skip while minimized/0-size — avoids degenerate matrix3d
     var m = coverMap();
     for (var i = 0; i < built.length; i++) {
       var scr = built[i], sw = scr.cv.width, sh = scr.cv.height;
@@ -310,7 +311,12 @@ window.LabDisplays = (function () {
     if (!ok || !onHome) return;
     placeAll();
     if (reduced() || document.hidden) { running = false; if (rafId) { caf(rafId); rafId = 0; } if (reduced()) paintAll(3.2); return; }
-    if (!running) { running = true; last = 0; if (!rafId) rafId = raf(frame); }
+    // (re)start cleanly: drop any stale frame, repaint once immediately so a returning tab is never stuck
+    // on a frozen frame, then resume the loop. (Always cancel+reschedule — never trust a leftover rafId.)
+    if (rafId) { caf(rafId); rafId = 0; }
+    running = true; last = 0;
+    paintAll((now() - t0) / 1000);
+    rafId = raf(frame);
   }
   function refresh() { if (!ok || !onHome) return; theme(); for (var i = 0; i < built.length; i++) built[i].accent = TH[SCREENS[i].accentKey] || TH.green; maybeStart(); }
   function onResize() { if (!ok || !onHome) return; clearTimeout(resizeTimer); resizeTimer = setTimeout(function () { if (onHome) { placeAll(); maybeStart(); } }, 140); }
@@ -337,7 +343,12 @@ window.LabDisplays = (function () {
     if (!ok) return;
     t0 = now();
     window.addEventListener('resize', onResize);
-    document.addEventListener('visibilitychange', maybeStart);
+    // Resume on tab/app return. Cover visibilitychange AND focus/pageshow (some WMs resume via focus only,
+    // and bfcache restores via pageshow). Re-place again after a tick in case window dims aren't settled yet.
+    function onShow() { if (!ok || !onHome) return; maybeStart(); setTimeout(function () { if (ok && onHome && !document.hidden) placeAll(); }, 150); }
+    document.addEventListener('visibilitychange', onShow);
+    window.addEventListener('focus', onShow);
+    window.addEventListener('pageshow', onShow);
   }
 
   return { init: init, start: start, stop: stop, refresh: refresh, resize: onResize, available: function () { return ok; }, calib: calib, setCorners: setCorners, getCorners: getCorners, setClockRotation: setClockRotation, getClockRotation: getClockRotation, setClockBox: setClockBox, getClockBox: getClockBox, setClockGrow: setClockGrow };
