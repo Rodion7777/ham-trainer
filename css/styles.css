@@ -484,5 +484,5 @@ h1, h2, h3 { line-height: 1.2; }
 
 /* responsive */
 @media (max-width: 540px) { .rig { padding: 1.2rem .9rem; } .rig-bank { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .rig-vfo { display: none; } }
+@media (max-width: 480px) { .rig-vfo { width: 64px; height: 64px; } }
 @media (max-width: 380px) { .rig-lcd__main { flex-direction: column; gap: .5rem; } }

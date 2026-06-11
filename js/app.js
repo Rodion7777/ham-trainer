@@ -61,10 +61,17 @@ window.App = (function () {
     el.setAttribute('role', 'slider'); el.setAttribute('tabindex', '0');
     el.setAttribute('aria-label', 'VFO frequency'); el.setAttribute('aria-valuetext', freqMHz() + ' MHz');
     el.addEventListener('wheel', function (e) { e.preventDefault(); var step = e.shiftKey ? 10000 : 1000; tuneBy(e.deltaY < 0 ? step : -step); }, { passive: false });
-    el.addEventListener('pointerdown', function (e) { dragging = true; dragY = e.clientY; try { el.setPointerCapture(e.pointerId); } catch (x) {} });
-    el.addEventListener('pointermove', function (e) { if (!dragging) return; var dy = dragY - e.clientY; if (Math.abs(dy) >= 1) { tuneBy(Math.round(dy) * 100); dragY = e.clientY; } });
-    el.addEventListener('pointerup', function (e) { dragging = false; try { el.releasePointerCapture(e.pointerId); } catch (x) {} });
-    el.addEventListener('pointercancel', function () { dragging = false; });
+    // Mouse/pen drag via pointer events (touch is handled by the touch listeners below so it never double-counts).
+    el.addEventListener('pointerdown', function (e) { if (e.pointerType === 'touch') return; dragging = true; dragY = e.clientY; try { el.setPointerCapture(e.pointerId); } catch (x) {} });
+    el.addEventListener('pointermove', function (e) { if (e.pointerType === 'touch' || !dragging) return; var dy = dragY - e.clientY; if (Math.abs(dy) >= 1) { tuneBy(Math.round(dy) * 100); dragY = e.clientY; } });
+    el.addEventListener('pointerup', function (e) { if (e.pointerType === 'touch') return; dragging = false; try { el.releasePointerCapture(e.pointerId); } catch (x) {} });
+    el.addEventListener('pointercancel', function (e) { if (e.pointerType !== 'touch') dragging = false; });
+    // Touch drag: non-passive touchmove + preventDefault reliably stops the page scrolling and feeds the knob
+    // (more robust than relying on touch-action/pointer-capture, which iOS/Android can cancel mid-gesture).
+    el.addEventListener('touchstart', function (e) { if (!e.touches[0]) return; dragging = true; dragY = e.touches[0].clientY; }, { passive: true });
+    el.addEventListener('touchmove', function (e) { if (!dragging || !e.touches[0]) return; e.preventDefault(); var dy = dragY - e.touches[0].clientY; if (Math.abs(dy) >= 1) { tuneBy(Math.round(dy) * 100); dragY = e.touches[0].clientY; } }, { passive: false });
+    el.addEventListener('touchend', function () { dragging = false; });
+    el.addEventListener('touchcancel', function () { dragging = false; });
     el.addEventListener('keydown', function (e) {
       var step = e.shiftKey ? 10000 : 1000;
       if (e.key === 'ArrowUp' || e.key === 'ArrowRight') { e.preventDefault(); tuneBy(step); }
