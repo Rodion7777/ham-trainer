@@ -1,0 +1,170 @@
+[
+  {
+    "code": "QRG",
+    "pl": "Częstotliwość pracy stacji; używane do pytania lub podania częstotliwości.",
+    "en": "Operating frequency; used to ask or state a station’s frequency.",
+    "ex": "QRG 3710 kHz"
+  },
+  {
+    "code": "QRK",
+    "pl": "Zrozumiałość sygnału; określa, jak dobrze treść sygnału jest czytelna.",
+    "en": "Signal intelligibility; describes how well the signal content is readable.",
+    "ex": "QRK 5"
+  },
+  {
+    "code": "QRL",
+    "pl": "Zajętość częstotliwości i operatora; używane do sprawdzenia, czy dana częstotliwość jest wolna lub czy stacja jest aktualnie w trakcie pracy.",
+    "en": "Frequency and Operator Busy Status; used to check whether a frequency is in use or if the operator is currently occupied with a contact.",
+    "ex": "QRL ?"
+  },
+  {
+    "code": "QRM",
+    "pl": "Zakłócenia od innych stacji lub urządzeń; opisuje poziom interferencji pochodzenia sztucznego.",
+    "en": "Man-made interference; describes interference caused by other stations or equipment.",
+    "ex": "QRM 4"
+  },
+  {
+    "code": "QRN",
+    "pl": "Zakłócenia pochodzenia naturalnego; trzaski atmosferyczne i inne szumy naturalne.",
+    "en": "Natural interference; describes static and other naturally caused noise.",
+    "ex": "QRN 5"
+  },
+  {
+    "code": "QRO",
+    "pl": "Zwiększenie mocy nadajnika; prośba lub polecenie, aby nadawać z większą mocą.",
+    "en": "Increase transmitter power; request or instruction to transmit with higher power.",
+    "ex": "QRO"
+  },
+  {
+    "code": "QRP",
+    "pl": "Zmniejszenie mocy nadajnika; praca z bardzo małą mocą.",
+    "en": "Decrease transmitter power; operation with very low output power.",
+    "ex": "QRP"
+  },
+  {
+    "code": "QRQ",
+    "pl": "Nadawanie szybciej; prośba lub polecenie zwiększenia szybkości nadawania (CW).",
+    "en": "Send faster; request or instruction to increase sending speed (CW).",
+    "ex": "QRQ"
+  },
+  {
+    "code": "QRS",
+    "pl": "Nadawanie wolniej; prośba lub polecenie zmniejszenia szybkości nadawania.",
+    "en": "Send slower; request or instruction to reduce sending speed.",
+    "ex": "QRS"
+  },
+  {
+    "code": "QRT",
+    "pl": "Zakończenie nadawania; informuje o definitywnym wyłączeniu stacji lub zakończeniu pracy na danej częstotliwości.",
+    "en": "Stop sending; indicates that a station is ceasing transmissions or going off the air.",
+    "ex": "QRT"
+  },
+  {
+    "code": "QRU",
+    "pl": "Brak dalszych informacji; sygnalizuje, że nie ma się już nic do przekazania.",
+    "en": "Nothing for you; indicates there is no further information to pass.",
+    "ex": "QRU 73"
+  },
+  {
+    "code": "QRV",
+    "pl": "Gotowość do pracy lub odbioru; informuje, że stacja jest przygotowana i dostępna.",
+    "en": "Ready; indicates a station is prepared and available for operation or reception.",
+    "ex": "QRV"
+  },
+  {
+    "code": "QRX",
+    "pl": "Chwilowa przerwa; informuje, aby poczekać lub że ponowne wywołanie nastąpi za określony czas.",
+    "en": "Stand by; indicates a temporary pause or that the station will call again after a short time.",
+    "ex": "QRX 1 min"
+  },
+  {
+    "code": "QRZ",
+    "pl": "Pytanie o znak wołającej stacji; używane, gdy ktoś nas wołał, ale znak był nieczytelny, lub jako zaproszenie do kolejnej łączności (DX/contest).",
+    "en": "Who is calling; used when a caller’s callsign was not copied, or as an invitation for the next station (DX/contest).",
+    "ex": "QRZ ?"
+  },
+  {
+    "code": "QSA",
+    "pl": "Siła sygnału; określa, jak silny jest odbierany sygnał radiowy.",
+    "en": "Signal strength; describes how strong the received radio signal is.",
+    "ex": "QSA 5"
+  },
+  {
+    "code": "QSB",
+    "pl": "Zanikanie sygnału (fading); okresowe wahania siły sygnału spowodowane propagacją.",
+    "en": "Signal fading; periodic variations in signal strength caused by propagation effects.",
+    "ex": "QSB"
+  },
+  {
+    "code": "QSD",
+    "pl": "Wadliwe kluczowanie; informuje o problemach z telegrafią lub sygnałem wynikających z błędów operatorskich lub usterek technicznych.",
+    "en": "Defective keying; indicates problems with CW keying or signal due to operator technique or technical faults.",
+    "ex": "QSD"
+  },
+  {
+    "code": "QSL",
+    "pl": "Potwierdzenie odbioru; informuje, że wszystkie przekazane dane zostały poprawnie odebrane i zrozumiane.",
+    "en": "Acknowledgement of receipt; confirms that all information has been correctly received.",
+    "ex": "QSL"
+  },
+  {
+    "code": "QSO",
+    "pl": "Łączność radiowa pomiędzy dwiema (lub więcej) stacjami; pełna, obustronna wymiana informacji.",
+    "en": "Radio contact between two (or more) stations; a completed two-way communication.",
+    "ex": "FB QSO 73"
+  },
+  {
+    "code": "QSV",
+    "pl": "Nadawanie serii liter V w celach technicznych (strojenie, testy odbioru/anteny).",
+    "en": "Send a series of V characters for technical purposes (tuning, reception/antenna tests).",
+    "ex": "QSV PSE"
+  },
+  {
+    "code": "QSW",
+    "pl": "Zapowiedź nadawania na konkretnej częstotliwości; informuje, gdzie stacja będzie nadawać (często przy pracy split).",
+    "en": "Will send on a specified frequency; indicates where the station will transmit (often in split operation).",
+    "ex": "QSW 3710 kHz"
+  },
+  {
+    "code": "QSX",
+    "pl": "Nasłuch na innej częstotliwości niż nadawanie; informuje, gdzie stacja słucha (praca typu split).",
+    "en": "Listening on another frequency; indicates where the station is receiving (split operation).",
+    "ex": "QSX 5 up"
+  },
+  {
+    "code": "QSY",
+    "pl": "Zmiana częstotliwości; prośba lub polecenie przejścia na inną częstotliwość nadawania.",
+    "en": "Change frequency; request or instruction to move transmission to another frequency.",
+    "ex": "QSY 3550 kHz"
+  },
+  {
+    "code": "QTC",
+    "pl": "Depesza/wiadomość do przekazania; informuje o posiadaniu określonej liczby wiadomości (traffic) do nadania.",
+    "en": "Traffic message(s); indicates that the station has one or more messages to transmit.",
+    "ex": "QTC 2"
+  },
+  {
+    "code": "QTH",
+    "pl": "Miejsce, w którym znajduje się stacja; lokalizacja operatora (miasto, region lub lokator).",
+    "en": "Station location; the place where the station is situated (city, area, or locator).",
+    "ex": "QTH WARSAW"
+  },
+  {
+    "code": "QTR",
+    "pl": "Dokładny czas; pytanie o aktualną godzinę lub jej podanie, najczęściej w czasie UTC.",
+    "en": "Correct time; request for or statement of the current time, usually in UTC.",
+    "ex": "QTR 1205 Z"
+  },
+  {
+    "code": "QUB",
+    "pl": "Informacja meteorologiczna; dane o widzialności, wysokości chmur oraz kierunku i prędkości wiatru w danym miejscu.",
+    "en": "Weather information; data on visibility, cloud height, and surface wind direction and speed at a given location.",
+    "ex": "QUB VIS 10KM CLD 500M WIND NW 15KT"
+  },
+  {
+    "code": "QWX",
+    "pl": "Informacja morska; stan morza oraz siła wiatru przyziemnego w danym miejscu (skala Beauforta).",
+    "en": "Sea state and surface wind; maritime weather information including sea condition and wind force (Beaufort scale).",
+    "ex": "QWX SEA 2 WIND 4 BFT"
+  }
+]

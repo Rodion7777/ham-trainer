@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0B0F0E" />
+  <meta name="description" content="Na Paśmie / On Air — gra do nauki Q-kodów krótkofalarskich (PL/EN). Działa offline, bez serwera." />
+  <title>Na Paśmie / On Air — nauka Q-kodów</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='6'%20fill='%230B0F0E'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='6.5'%20fill='%233ddc84'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skiplink" href="#screen">→ treść</a>
+
+  <canvas id="fxbg" aria-hidden="true"></canvas>
+  <canvas id="labbg" aria-hidden="true"></canvas>
+  <canvas id="labbg3d" aria-hidden="true"></canvas>
+  <div id="labphoto" aria-hidden="true"></div>
+  <canvas id="labglint" aria-hidden="true"></canvas>
+  <div id="labdisp" aria-hidden="true"></div>
+
+  <header id="topbar" class="topbar" role="banner"></header>
+
+  <main id="screen" class="screen" tabindex="-1" role="main"></main>
+
+  <!-- compact code-status band map, moved to the page bottom -->
+  <div id="bandstrip" class="bandstrip"></div>
+
+  <!-- music attribution (Uppbeat) — collapsed by default, slides in when the page is scrolled down -->
+  <aside id="music-credits" class="music-credits" aria-label="Music credits">
+    <p class="music-credits__hd">Music from <a href="https://uppbeat.io/" target="_blank" rel="noopener noreferrer">#Uppbeat</a> (free for Creators!):</p>
+    <p class="music-credits__item">
+      <a href="https://uppbeat.io/t/pecan-pie/kawaii-island" target="_blank" rel="noopener noreferrer">https://uppbeat.io/t/pecan-pie/kawaii-island</a><br />
+      License code: <span class="music-credits__code">CXHKPF0LDDNLUSYA</span>
+    </p>
+    <p class="music-credits__item">
+      <a href="https://uppbeat.io/t/albert-behar/scene-of-the-crime" target="_blank" rel="noopener noreferrer">https://uppbeat.io/t/albert-behar/scene-of-the-crime</a><br />
+      License code: <span class="music-credits__code">2PXOALDKEQ1DDMKU</span>
+    </p>
+  </aside>
+
+  <!-- screen-reader live region -->
+  <div id="live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- looping lobby background music (plays only on the lobby when sound is enabled) -->
+  <audio id="bgm" src="assets/lobby-music.mp3" loop preload="auto" aria-hidden="true"></audio>
+  <!-- Ham Saber game music -->
+  <audio id="bgm-saber" src="assets/hamsaber-music.mp3" loop preload="none" aria-hidden="true"></audio>
+
+  <noscript><p style="padding:2rem;text-align:center">Ta gra wymaga włączonego JavaScript. / This game needs JavaScript enabled.</p></noscript>
+
+  <!-- classic scripts, dependency order, file://-safe (no modules, no fetch) -->
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/srs.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/fx.js"></script>
+  <script src="js/lab.js"></script>
+  <script src="js/lab3d.js"></script>
+  <script src="js/labphoto.js"></script>
+  <script src="js/labdisplays.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/mode-flow.js"></script>
+  <script src="js/mode-sendit.js"></script>
+  <script src="js/mode-twintrap.js"></script>
+  <script src="js/mode-format.js"></script>
+  <script src="js/mode-onband.js"></script>
+  <script src="js/mode-pileup.js"></script>
+  <script src="js/mode-bitsaber.js"></script>
+  <script src="js/mode-sweep.js"></script>
+  <script>
+    (function () {
+      function boot() { try { App.boot(); } catch (e) { console.error('boot failed', e); } }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+      else boot();
+    })();
+  </script>
+</body>
+</html>

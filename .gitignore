@@ -1,0 +1,17 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*~
+.vscode/
+.idea/
+
+# logs / temp
+*.log
+
+# local static-server build output (if any)
+/_site/
+
+# image backups created while editing the holed photo — kept locally, not part of the site
+assets/*_bkp*.webp
+assets/*-bkp*.webp
+assets/*_pre-*.webp
