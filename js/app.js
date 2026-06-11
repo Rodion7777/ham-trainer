@@ -57,13 +57,14 @@ window.App = (function () {
     renderFreq();
   }
   function setupVFO(el) {
-    knobEl = el; el.style.cursor = 'ns-resize';
+    knobEl = el; el.style.cursor = 'ns-resize'; el.style.touchAction = 'none'; // touch drags tune the knob instead of scrolling the page
     el.setAttribute('role', 'slider'); el.setAttribute('tabindex', '0');
     el.setAttribute('aria-label', 'VFO frequency'); el.setAttribute('aria-valuetext', freqMHz() + ' MHz');
     el.addEventListener('wheel', function (e) { e.preventDefault(); var step = e.shiftKey ? 10000 : 1000; tuneBy(e.deltaY < 0 ? step : -step); }, { passive: false });
     el.addEventListener('pointerdown', function (e) { dragging = true; dragY = e.clientY; try { el.setPointerCapture(e.pointerId); } catch (x) {} });
     el.addEventListener('pointermove', function (e) { if (!dragging) return; var dy = dragY - e.clientY; if (Math.abs(dy) >= 1) { tuneBy(Math.round(dy) * 100); dragY = e.clientY; } });
     el.addEventListener('pointerup', function (e) { dragging = false; try { el.releasePointerCapture(e.pointerId); } catch (x) {} });
+    el.addEventListener('pointercancel', function () { dragging = false; });
     el.addEventListener('keydown', function (e) {
       var step = e.shiftKey ? 10000 : 1000;
       if (e.key === 'ArrowUp' || e.key === 'ArrowRight') { e.preventDefault(); tuneBy(step); }
